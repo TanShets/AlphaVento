@@ -1,4 +1,12 @@
 {% extends "BetaArgenti/BetaArgenti_main.html" %}
 {% block content %}
-Why hello there
+Hello dearie<br>
+    Goodbye
+    <div class="container">
+        <table class = "table">
+            {% for word in words %}
+                <tr><th scope = "row">{{ word }}</th></tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
