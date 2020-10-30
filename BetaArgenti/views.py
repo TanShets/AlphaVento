@@ -12,6 +12,8 @@ def goAbout(request):
 	context = {
 		'name': "Tanish Shetty", 'username': "TanShets",
 		'email': "shettytanish02@gmail.com",
-		'subjects': [], 'chats': []
+		'subjects': ["wide", "bro", "yes", "yep"], 
+		'chats': ["Hickigaya", "Yui", "Yukino", "Totsuka", "Hayato", "Haruno"], 
+		'title': "Profile"
 	}
-	return render(request, 'BetaArgenti/about.html', context)
+	return render(request, 'BetaArgenti/profile.html', context)

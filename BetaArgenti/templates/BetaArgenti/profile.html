@@ -1,0 +1,27 @@
+{% extends "BetaArgenti/BetaArgenti_main.html" %}
+{% block content %}
+    <div class = "container">
+        <h1>Profile</h1>
+        <table class = "table">
+            <tr><th scope = "row"><td>Name</td><td>{{ name }}</td></th></tr>
+            <tr><th scope = "row"><td>Username</td><td>{{ username }}</td></th></tr>
+            <tr><th scope = "row"><td>Email</td><td>{{ email }}</td></th></tr>
+            <tr><th scope = "row">
+                <td>Subjects</td>
+                <td>
+                    {% for i in subjects %}
+                        <button class = "btn btn-primary">{{ i }}</button>
+                    {% endfor %}
+                </td>
+            </th></tr>
+            <tr><th scope = "row">
+                <td>Chats</td>
+                <td>
+                    {% for i in chats %}
+                        <button class = "btn btn-success">{{ i }}</button>
+                    {% endfor %}
+                </td>
+            </th></tr>
+        </table>
+    </div>
+{% endblock %}
