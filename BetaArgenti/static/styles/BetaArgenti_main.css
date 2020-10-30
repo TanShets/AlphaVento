@@ -1,0 +1,16 @@
+.subject-view{
+    background-color: #f2f2f2;
+    border: 2px solid #bfbfbf;
+    padding-left: 7px;
+    width: 1000px;
+    height: 130px;
+}
+
+.author-subject-view{
+    position: relative;
+    width: 180px;
+    left: 775px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}

@@ -1,0 +1,13 @@
+{% extends "BetaArgenti/BetaArgenti_main.html" %}
+{% block content %}
+    <br>
+    <div class="container">
+        {% for i in subjects %}
+            <article class = "subject-view">
+                <h1>{{i.title}}</h1>
+                <p>{{i.description}}</p>
+                <div class = "author-subject-view">Authored by: {{i.author}}</div>
+            </article>
+        {% endfor %}
+    </div>
+{% endblock %}
