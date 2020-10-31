@@ -8,9 +8,14 @@
     <div class = "container-fluid">
         <table class = "table">
             <tr><th scope= "row"><td><h1>Profile</h1></td></th></tr>
-            <tr><th scope = "row"><td>Name</td><td>{{ name }}</td></th></tr>
-            <tr><th scope = "row"><td>Username</td><td>{{ username }}</td></th></tr>
-            <tr><th scope = "row"><td>Email</td><td>{{ email }}</td></th></tr>
+            <tr><th scope = "row">
+                <td>Name</td>
+                <td>
+                    {{ user.name }}
+                </td>
+            </th></tr>
+            <tr><th scope = "row"><td>Username</td><td>{{ user.username }}</td></th></tr>
+            <tr><th scope = "row"><td>Email</td><td>{{ user.email }}</td></th></tr>
             <tr><th scope = "row">
                 <td>Subjects</td>
                 <td>
