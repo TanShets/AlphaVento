@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Subject
+from .forms import UserRegForm
+from django.contrib import messages
+from django.shortcuts import redirect
 
 def getHome(request):
 	words = ['Yeah yeah', 'nope', 'Yesterday']
@@ -28,3 +30,15 @@ def viewSubject(request):
 	#subject = Subject.objects.get(id = subject_id)
 	context = {'title': "SubjectName"}
 	return render(request, 'BetaArgenti/subject.html', context)
+
+def createAccount(request):
+	if request.method == 'POST':
+		form = UserRegForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			messages.success(request, f'Account Username: {username} created!')
+			return redirect('default')
+	else:
+		form = UserRegForm()
+	return render(request, 'BetaArgenti/create.html', {'form': form})

@@ -9,8 +9,11 @@ class Subject(models.Model):
     students = models.TextField()
     creation_date = models.DateTimeField(auto_now_add = True)
     author = models.ForeignKey(User, on_delete = models.CASCADE)
+    
+    def __str__(self):
+        return f'( id: {self.id}, title: {self.title} )'
 
 class Message(models.Model):
     content = models.TextField()
     message_date = models.DateTimeField(auto_now_add = True)
-    authod = models.ForeignKey(User, null = True, on_delete = models.SET_NULL)
+    author = models.ForeignKey(User, null = True, on_delete = models.SET_NULL)

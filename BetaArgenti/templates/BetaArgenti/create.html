@@ -1,0 +1,19 @@
+{% extends "BetaArgenti/BetaArgenti_main.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <br>
+    <div class = "container" style = "background-color: #f2f2f2; padding-bottom: 20px;">
+        <h1>Register Account</h1><br>
+        <form method = "POST">
+            {% csrf_token %}
+            <fieldset class = "form-group">
+                {{ form | crispy }}
+            </fieldset>
+            <div class = "form-group">
+                <button type = "submit" class = "btn btn-success">Create User</button>
+            </div>
+        </form>
+        <label for = "Login">Already have an Account?</label>
+        <a class = "ml-2" id = "Login" href = "{% url 'default' %}">Go to Login</a>
+    </div>
+{% endblock %}
