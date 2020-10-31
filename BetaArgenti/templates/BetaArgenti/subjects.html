@@ -1,5 +1,10 @@
 {% extends "BetaArgenti/BetaArgenti_main.html" %}
 {% block content %}
+    {% if not user.is_authenticated %}
+        <script>
+            window.location.replace("{% url 'login' %}");
+        </script>
+    {% endif %}
     <br>
     <div class="container-fluid">
         {% for i in subjects %}

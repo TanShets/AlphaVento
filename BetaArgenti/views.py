@@ -3,6 +3,7 @@ from .models import Subject
 from .forms import UserRegForm
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.contrib.auth.views import LoginView, LogoutView
 
 def getHome(request):
 	words = ['Yeah yeah', 'nope', 'Yesterday']
@@ -42,3 +43,6 @@ def createAccount(request):
 	else:
 		form = UserRegForm()
 	return render(request, 'BetaArgenti/create.html', {'form': form})
+
+def login_success(request):
+	return redirect('default')

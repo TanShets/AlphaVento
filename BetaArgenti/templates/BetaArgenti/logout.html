@@ -1,0 +1,8 @@
+{% extends "BetaArgenti/BetaArgenti_main.html" %}
+{% block content %}
+    <br>
+    <div class = "container" style = "padding-bottom: 20px;">
+        <h1>You have been logged out</h1><br>
+        Click<a class = "ml-2" href = "{% url 'login' %}">Login</a> to login again
+    </div>
+{% endblock %}
