@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Subject
-from .forms import UserRegForm
+from .forms import *
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.views import LoginView, LogoutView
@@ -14,8 +14,6 @@ def getHome(request):
 def goAbout(request):
 	print("Reached here")
 	context = {
-		'name': "Tanish Shetty", 'username': "TanShets",
-		'email': "shettytanish02@gmail.com",
 		'subjects': ["wide", "bro", "yes", "yep"], 
 		'chats': ["Hickigaya", "Yui", "Yukino", "Totsuka", "Hayato", "Haruno"], 
 		'title': "Profile"

@@ -7,11 +7,14 @@
     {% endif %}
     <div class = "container-fluid">
         <table class = "table">
-            <tr><th scope= "row"><td><h1>Profile</h1></td></th></tr>
+            <tr><th scope= "row">
+                <td><h1>Profile</h1></td>
+                <td><button class = "btn btn-primary" style="margin-top: 10px;">Edit Profile</button></td>
+            </th></tr>
             <tr><th scope = "row">
                 <td>Name</td>
                 <td>
-                    {{ user.name }}
+                    {{ user.profile.name }}
                 </td>
             </th></tr>
             <tr><th scope = "row"><td>Username</td><td>{{ user.username }}</td></th></tr>
