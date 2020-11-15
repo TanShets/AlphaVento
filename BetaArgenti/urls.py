@@ -9,5 +9,5 @@ urlpatterns = [
 	path('/create', views.createAccount, name = "create"),
 	path('/login', views.LoginView.as_view(template_name = "BetaArgenti/login.html"), name = "login"),
 	path('/logout', views.LogoutView.as_view(template_name = "BetaArgenti/logout.html"), name = "logout"),
-	path('/accounts/profile/', views.login_success, name = "login-success")
+	path('/accounts/profile', views.login_success, name = "login-success")
 ]

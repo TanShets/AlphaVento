@@ -5,14 +5,22 @@
             window.location.replace("{% url 'login' %}");
         </script>
     {% endif %}
+    <script>
+        function go(){
+            
+        }
+    </script>
     <br>
     <div class="container-fluid">
         {% for i in subjects %}
+        <form method = "POST">
             <article class = "subject-view">
                 <h1>{{i.title}}</h1>
                 <p>{{i.description}}</p>
                 <div class = "author-subject-view">Authored by: {{i.author}}</div>
             </article>
+            <input type = "hidden" name = "id" value = "{{ i.id }}">
+        </form>
         {% endfor %}
     </div>
 {% endblock %}

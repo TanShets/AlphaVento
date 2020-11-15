@@ -6,19 +6,60 @@
         </script>
     {% endif %}
     <div class = "container-fluid">
-        <table class = "table">
+        {% if isEdit == 1 %}
+            <form method = "POST">
+                {% csrf_token %}
+        {% endif %}
+        <table class = "table table-striped">
             <tr><th scope= "row">
                 <td><h1>Profile</h1></td>
-                <td><button class = "btn btn-primary" style="margin-top: 10px;">Edit Profile</button></td>
+                <td>
+                    {% if isEdit == 0 %}
+                        <form method = "POST">
+                            {% csrf_token %}
+                            <input type = "hidden" name = "isEdit" value = "Start">
+                            <button class = "btn btn-primary" type = "submit" style="margin-top: 10px;">
+                                Edit Profile
+                            </button>
+                        </form>
+                    {% elif isEdit == 1 %}
+                        <input type = "hidden" name = "isEdit" value = "End">
+                        <button class = "btn btn-success" type = "submit" style="margin-top: 10px;">
+                            Save
+                        </button>
+                    {% endif %}
+                </td>
             </th></tr>
             <tr><th scope = "row">
                 <td>Name</td>
                 <td>
-                    {{ user.profile.name }}
+                    {% if isEdit == 0 %}
+                        {{ user.profile.name }}
+                    {% elif isEdit == 1 %}
+                        <input type = "text" class = "form-control" name = "name" value = "{{ user.profile.name }}">
+                    {% endif %}
                 </td>
             </th></tr>
-            <tr><th scope = "row"><td>Username</td><td>{{ user.username }}</td></th></tr>
-            <tr><th scope = "row"><td>Email</td><td>{{ user.email }}</td></th></tr>
+            <tr><th scope = "row">
+                <td>Username</td>
+                <td>
+                    {% if isEdit == 0 %}
+                        {{ user.username }}
+                    {% elif isEdit == 1 %}
+                        <input type = "text" class = "form-control" name = "username" value = "{{ user.username }}">
+                    {% endif %}
+                </td>
+            </th></tr>
+            <tr><th scope = "row">
+                <td>Email</td>
+                <td>
+                    {% if isEdit == 0 %}
+                        {{ user.email }}
+                    {% elif isEdit == 1 %}
+                        <input type = "text" class = "form-control" name = "email" value = "{{ user.email }}">
+                    {% endif %}
+                </td>
+            </th></tr>
             <tr><th scope = "row">
                 <td>Subjects</td>
                 <td>
@@ -36,5 +77,8 @@
                 </td>
             </th></tr>
         </table>
+        {% if isEdit == 1 %}
+            </form>
+        {% endif %}
     </div>
 {% endblock %}
