@@ -4,6 +4,7 @@ from .forms import *
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import DetailView
 
 def getHome(request):
 	words = ['Yeah yeah', 'nope', 'Yesterday']
@@ -27,7 +28,7 @@ def goAbout(request):
 		return render(request, 'BetaArgenti/profile.html', context)
 	elif request.POST.get('isEdit', False) == "Start":
 		#print(request.POST)
-		form1 = UserUpdateForm()
+		form1 = UserUpdateXForm()
 		form2 = ProfileUpdateForm()
 		context['form1'] = form1
 		context['form2'] = form2
@@ -43,17 +44,19 @@ def goAbout(request):
 		for_profile_form = {
 			'name': request.POST.get('name', False)
 		}
-		print(request.user.email)
-		form1 = UserUpdateForm(for_user_form)
-		form2 = ProfileUpdateForm(for_profile_form)
+		#print(request.user.email)
+		form1 = UserUpdateXForm(data = for_user_form, instance = request.user)
+		form2 = ProfileUpdateForm(data = for_profile_form, instance = request.user.profile)
 		if form1.is_valid() and form2.is_valid():
 			form1.save()
 			form2.save()
-			messages.success(request, f'Account Username: {username} updated!')
+			messages.success(request, f'Account Username: {request.user.username} updated!')
+			#print("Achieved")
 			return redirect('profile')
 		else:
 			#print(request.POST)
-			#print("Form User is", form1.is_valid())
+			print("Form User is", form1.is_valid())
+			messages.danger(request, f'Account Username: { request.user.username } could not be updated')
 			#print(form2.is_valid())
 			return redirect('profile')
 
@@ -63,7 +66,11 @@ def viewSubjects(request):
 		context = {'subjects': subjects, 'title': "View Subjects"}
 		return render(request, 'BetaArgenti/subjects.html', context)
 	else:
-		print(request.POST)
+		new_id = request.POST.get("id", False)
+		if new_id:
+			return redirect('subject/'+str(new_id))
+		else:
+			return redirect('subjects')
 
 def viewSubject(request):
 	#subject = Subject.objects.get(id = subject_id)
@@ -84,3 +91,13 @@ def createAccount(request):
 
 def login_success(request):
 	return redirect('default')
+
+class SubjectView(DetailView):
+	model = Subject
+	template_name = 'BetaArgenti/subject.html'
+	context_object_name = 'subject'
+	
+	def get_context_data(self, *args, **kwargs):
+		data = super(SubjectView, self).get_context_data(*args, **kwargs)
+		data['title'] = data['subject'].title + ' - ' + str(data['subject'].author)
+		return data

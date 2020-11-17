@@ -10,15 +10,21 @@
             
         }
     </script>
+    {% if id %}
+        {{ id }}
+    {% endif %}
     <br>
     <div class="container-fluid">
         {% for i in subjects %}
-        <form method = "POST">
-            <article class = "subject-view">
-                <h1>{{i.title}}</h1>
-                <p>{{i.description}}</p>
-                <div class = "author-subject-view">Authored by: {{i.author}}</div>
-            </article>
+        <form method = "POST" id = "{{ i.title }} {{ i.author }}">
+            {% csrf_token %}
+            <div onclick = "document.getElementById('{{ i.title }} {{i.author }}').submit();">
+                <article class = "subject-view">
+                    <h1>{{i.title}}</h1>
+                    <p>{{i.description}}</p>
+                    <div class = "author-subject-view">Authored by: {{i.author}}</div>
+                </article>
+            </div>
             <input type = "hidden" name = "id" value = "{{ i.id }}">
         </form>
         {% endfor %}

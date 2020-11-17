@@ -6,6 +6,19 @@
         </script>
     {% endif %}
     <div class = "container-fluid">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "success" %}
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> {{ message }}
+                    </div>
+                {% elif message.tags == "danger" %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
         {% if isEdit == 1 %}
             <form method = "POST">
                 {% csrf_token %}
