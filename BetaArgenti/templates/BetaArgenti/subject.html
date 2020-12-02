@@ -1,5 +1,7 @@
 {% extends "BetaArgenti/BetaArgenti_main.html" %}
+{% load static %}
 {% block content %}
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'styles/BetaArgenti_subject.css' %}">
     {% if not user.is_authenticated %}
         <script>
             window.location.replace("{% url 'login' %}");
@@ -7,16 +9,35 @@
     {% endif %}
     <br>
     <div class="container-fluid">
-        <article class = "subject-view">
-            {% if subject %}
-                <h1>{{ subject.title }}</h1>
-                <p>{{ subject.description }}</p>
-                <div class = "author-subject-view">Authored by: {{ subject.author }}</div>
-            {% else %}
+        {% if subject %}
+            <h1>{{ subject.title }}</h1>
+            <hr>
+            Authored by: {{ subject.author }}<br>
+            Description: {{ subject.description }}<br>
+            <table>
+                <tr>
+                    <td>
+                        <div style = "background-color: aqua; width: 250px; height: 250px; text-align: center;"><p style = "vertical-align: text-bottom;">Yes</p></div>
+                    </td>
+                    <td>
+                        <div>Yes</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>No</div>
+                    </td>
+                    <td>
+                        <div>No</div>
+                    </td>
+                </tr>
+            </table>
+        {% else %}
+            <article class = "subject-view">
                 <h1>title</h1>
                 <p>description</p>
                 <div class = "author-subject-view">Authored by: Author name</div>
-            {% endif %}
-        </article>
+            </article>
+        {% endif %}
     </div>
 {% endblock %}

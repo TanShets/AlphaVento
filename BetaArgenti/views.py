@@ -100,4 +100,5 @@ class SubjectView(DetailView):
 	def get_context_data(self, *args, **kwargs):
 		data = super(SubjectView, self).get_context_data(*args, **kwargs)
 		data['title'] = data['subject'].title + ' - ' + str(data['subject'].author)
+		#print(data)
 		return data
