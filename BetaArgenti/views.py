@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from .models import Subject
 from .forms import *
 from django.contrib import messages
@@ -91,41 +92,3 @@ def createAccount(request):
 
 def login_success(request):
 	return redirect('default')
-
-class SubjectView(DetailView):
-	model = Subject
-	template_name = 'BetaArgenti/subject.html'
-	context_object_name = 'subject'
-	
-	def get_context_data(self, *args, **kwargs):
-		data = super(SubjectView, self).get_context_data(*args, **kwargs)
-		data['title'] = data['subject'].title + ' - ' + str(data['subject'].author)
-		data['id'] = data['subject'].id
-		#print(self.__dict__)
-		return data
-	
-	@classonlymethod
-	def as_view(cls, **initkwargs):
-		self = cls(**initkwargs)
-		view = super(DetailView, cls).as_view(**initkwargs)
-		return view
-	
-	def dispatch(self, request, *args, **kwargs):
-		if self.request.GET.get('id', False):
-			num = int(self.request.GET.get('link', 0))
-			if num == 0:
-				return super(SubjectView, self).dispatch(request, *args, **kwargs)
-			elif num == 1:
-				print("1")
-				return super(SubjectView, self).dispatch(request, *args, **kwargs)
-			elif num == 2:
-				print("2")
-				return super(SubjectView, self).dispatch(request, *args, **kwargs)
-			elif num == 3:
-				print("3")
-				return super(SubjectView, self).dispatch(request, *args, **kwargs)
-			elif num == 4:
-				print("4")
-				return super(SubjectView, self).dispatch(request, *args, **kwargs)
-		else:
-			return super(SubjectView, self).dispatch(request, *args, **kwargs)
