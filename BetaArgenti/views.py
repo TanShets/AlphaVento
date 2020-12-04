@@ -74,8 +74,7 @@ def viewSubjects(request):
 
 def viewSubject(request):
 	#subject = Subject.objects.get(id = subject_id)
-	context = {'title': "SubjectName"}
-	return render(request, 'BetaArgenti/subject.html', context)
+	return render(request, 'BetaArgenti/subject.html')
 
 def createAccount(request):
 	if request.method == 'POST':
@@ -100,5 +99,5 @@ class SubjectView(DetailView):
 	def get_context_data(self, *args, **kwargs):
 		data = super(SubjectView, self).get_context_data(*args, **kwargs)
 		data['title'] = data['subject'].title + ' - ' + str(data['subject'].author)
-		#print(data)
+		data['id'] = data['subject'].id
 		return data

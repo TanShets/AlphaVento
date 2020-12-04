@@ -1,4 +1,36 @@
 .panel{
-    width: 500px;
-    height: 500px;
+    width: 250px;
+    height: 250px;
+    padding-top: 117px;
+    border-radius: 5%;
+    color: #f2f2f2;
+    font-size: larger;
+}
+
+#option1{
+    background-color: #e60000;
+}
+#option1:hover{
+    background-color: #b30000;
+}
+
+#option2{
+    background-color:#005ce6;
+}
+#option2:hover{
+    background-color:#0047b3;
+}
+
+#option3{
+    background-color:#e6b800;
+}
+#option3:hover{
+    background-color: #cca300;
+}
+
+#option4{
+    background-color:#2eb82e;
+}
+#option4:hover{
+    background-color: #248f24;
 }
