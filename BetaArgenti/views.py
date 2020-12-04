@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic import DetailView
+from django.utils.decorators import classonlymethod
 
 def getHome(request):
 	words = ['Yeah yeah', 'nope', 'Yesterday']
@@ -100,4 +101,31 @@ class SubjectView(DetailView):
 		data = super(SubjectView, self).get_context_data(*args, **kwargs)
 		data['title'] = data['subject'].title + ' - ' + str(data['subject'].author)
 		data['id'] = data['subject'].id
+		#print(self.__dict__)
 		return data
+	
+	@classonlymethod
+	def as_view(cls, **initkwargs):
+		self = cls(**initkwargs)
+		view = super(DetailView, cls).as_view(**initkwargs)
+		return view
+	
+	def dispatch(self, request, *args, **kwargs):
+		if self.request.GET.get('id', False):
+			num = int(self.request.GET.get('link', 0))
+			if num == 0:
+				return super(SubjectView, self).dispatch(request, *args, **kwargs)
+			elif num == 1:
+				print("1")
+				return super(SubjectView, self).dispatch(request, *args, **kwargs)
+			elif num == 2:
+				print("2")
+				return super(SubjectView, self).dispatch(request, *args, **kwargs)
+			elif num == 3:
+				print("3")
+				return super(SubjectView, self).dispatch(request, *args, **kwargs)
+			elif num == 4:
+				print("4")
+				return super(SubjectView, self).dispatch(request, *args, **kwargs)
+		else:
+			return super(SubjectView, self).dispatch(request, *args, **kwargs)

@@ -13,22 +13,62 @@
             <h1>{{ subject.title }}</h1>
             <hr>
             Authored by: {{ subject.author }}<br>
-            Description: {{ subject.description }}<br>
-            <table>
+            Description: {{ subject.description }}<p></p>
+            <table class = "option-set">
                 <tr>
                     <td>
-                        <div class = "panel" id = "option1"><center>Open Chat</center></div><!--style = "background-color: aqua; width: 250px; height: 250px; text-align: center;"><p style = "vertical-align: text-bottom;"-->
+                        <form method = "get" id = "form-option1">
+                            {% csrf_token %}
+                            <input type = "hidden" name = "id" value = "{{ id }}">
+                            <input type = "hidden" name = "link" value = "1">
+                            <div class = "panel" id = "option1"
+                                onclick = "document.getElementById('form-option1').submit()"
+                            >
+                                <center>Open Chat</center>
+                            </div>
+                            <!--style = "background-color: aqua; width: 250px; height: 250px; text-align: center;"><p style = "vertical-align: text-bottom;"-->
+                        </form>    
                     </td>
                     <td>
-                        <div class = "panel" id = "option2"><center>View Members</center></div>
+                        <form method = "get" id = "form-option2">
+                            {% csrf_token %}
+                            <input type = "hidden" name = "id" value = "{{ id }}">
+                            <input type = "hidden" name = "link" value = "2">
+                            <div class = "panel" id = "option2"
+                                onclick = "document.getElementById('form-option2').submit()"
+                            >
+                                <center>View Members</center>
+                            </div>
+                            <!--style = "background-color: aqua; width: 250px; height: 250px; text-align: center;"><p style = "vertical-align: text-bottom;"-->
+                        </form>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <div class = "panel" id = "option3"><center>View Assignments</center></div>
+                        <form method = "get" id = "form-option3">
+                            {% csrf_token %}
+                            <input type = "hidden" name = "id" value = "{{ id }}">
+                            <input type = "hidden" name = "link" value = "3">
+                            <div class = "panel" id = "option3"
+                                onclick = "document.getElementById('form-option3').submit()"
+                            >
+                                <center>View Assignments</center>
+                            </div>
+                            <!--style = "background-color: aqua; width: 250px; height: 250px; text-align: center;"><p style = "vertical-align: text-bottom;"-->
+                        </form>
                     </td>
                     <td>
-                        <div class = "panel" id = "option4"><center>Reference Material</center></div>
+                        <form method = "get" id = "form-option4">
+                            {% csrf_token %}
+                            <input type = "hidden" name = "id" value = "{{ id }}">
+                            <input type = "hidden" name = "link" value = "4">
+                            <div class = "panel" id = "option4"
+                                onclick = "document.getElementById('form-option4').submit()"
+                            >
+                                <center>Reference Material</center>
+                            </div>
+                            <!--style = "background-color: aqua; width: 250px; height: 250px; text-align: center;"><p style = "vertical-align: text-bottom;"-->
+                        </form>
                     </td>
                 </tr>
             </table>
