@@ -1,5 +1,20 @@
 {% extends "BetaArgenti/BetaArgenti_main.html" %}
 {% load static %}
 {% block content %}
+<link rel = "stylesheet" type = "text/css" href = "{% static 'styles/subject/chat.css' %}">
+<div class = "container-fluid" style = "height: 600px;">
+    <div>
+        <form method = "POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td width = "200%"><input name = "message" type = "text" class = "input-message"/></td>
+                    <td><input type = "image" class = "send-button" src = "{% static 'media/sendy.svg' %}" alt = "Submit" width = "40" height = "40"/></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}
